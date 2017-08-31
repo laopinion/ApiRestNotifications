@@ -26,7 +26,7 @@ admin.initializeApp({
 });
 
 app.get('/', function(req, res){
-  resetUI.status(200).send('Hola welcome');
+  res.status(200).send('Hola welcome');
 });
 
 app.get('/createToken/:token', function(req, res){
