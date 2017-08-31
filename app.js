@@ -50,7 +50,7 @@ app.get('/createToken/:token', function(req, res){
 // Documentación https://firebase.google.com/docs/cloud-messaging/admin/send-messages
 app.post('/sendMessanging', function(req, res){
   const topic = 'newnews';
-  console.log('data post -> ', req.body);
+  // console.log('data post -> ', req.body);
   // res.status(200).send({ message: 'response data '});
   const payload = req.body;
   admin.messaging().sendToTopic(topic, payload)
