@@ -25,6 +25,10 @@ admin.initializeApp({
   databaseURL: 'https://notificacionesop.firebaseio.com'
 });
 
+app.get('/', function(req, res){
+  resetUI.status(200).send('Hola welcome');
+});
+
 app.get('/createToken/:token', function(req, res){
   // console.log('Create token post ', req.params.token);
   const currentToken = req.params.token;
