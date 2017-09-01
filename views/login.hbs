@@ -1,0 +1,28 @@
+<form id="formLogin" method="post">
+  <input type="email" name="email" placeholder="Tu Email">
+  <br><br>
+  <input type="password" name="password" placeholder="Tu Contraseña">
+  <br><br>
+  <input type="submit" value="Login">
+</form>
+
+<script>
+  const formLogin = document.querySelector('#formLogin');
+  formLogin.addEventListener('submit', event => {
+    event.preventDefault();
+    const formData = new FormData(formLogin);
+    // console.log(formData)
+    // El metodo fetch envia por defecto methods GET,
+    // Tener en cuenta de nodemon hay que que resetearlo para que tome los cambios,
+    // De los .hbs handlebars
+    fetch('/api/signin', {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      // Guardamos el token en localStorage
+      localStorage.setItem('token', data.token)
+    })
+  });
+</script>

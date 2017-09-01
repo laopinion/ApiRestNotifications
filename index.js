@@ -1,9 +1,14 @@
 'use strict'
 
+const mongoose = require('mongoose');
 const app = require('./app');
 const config = require('./config');
 
-app.listen(config.port, function(){
-  console.log(`Server on port ${config.port}`)
+mongoose.connect(config.db, { useMongoClient: true }, (err, res) => {
+  if (err) return console.log('Error al conectar con la base de datos: ', err);
+  console.log('Conexión a la base de datos establecidad....');
+  const port = config.port;
+  app.listen(port, () => {
+    console.log(`Server on port http://localhost:${port}`);
+  });
 });
-
