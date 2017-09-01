@@ -3,21 +3,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
-// const crypto = require('crypto');
 
 const UserSchema = new Schema({
   email: { type: String, unique: true, lowercase: true },
   displayName: String,
   password: { type: String, required: true },
   signupDate: { type: Date, default: Date.now() },
-  lastLogin: Date
+  lastLogin: { type: Date, default: Date.now() }
 });
 
-/* UserSchema.pre('save', (next) => {
+UserSchema.pre('save', function(next) {
   let user = this;
 
-  // Verificar porque no funciona esta linea de código.
-  //if(!user.isModified('password')) return next()
+  if (!user.isModified('password')) return next();
 
   bcrypt.genSalt(10, (err, salt) => {
     if(err) return next(err);
@@ -28,9 +26,18 @@ const UserSchema = new Schema({
       user.password = hash;
       next();
     });
+
   });
   
-}); */
+});
+
+// Compara claves
+UserSchema.methods.comparePassword = function(candidatePassword, cb) {
+  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+      if (err) return cb(err);
+      cb(null, isMatch);
+  });
+};
 
 // UserSchema.methods.gravatar = function(){
 //   if(!this.email) return 'https://gravatar.com/avatar/?s=200&d=retro'

@@ -18,7 +18,15 @@ api.get('/createToken/:token', auth, notifiCtrl.createToken);
  */
 api.post('/sendMessanging', auth, notifiCtrl.sendMessanging);
 
-api.post('/signup', userCtrl.signUp);
+// Registro de un user 
+// api.post('/signup', userCtrl.signUp);
+
+// Iniciar seseion
 api.post('/signin', userCtrl.signIn);
+
+api.get('/private', auth, function(req, res){
+
+  res.stata(200).send({ message: 'Estás autenticado correctamente y tu _id es:'+ req.user });
+});
 
 module.exports = api;
