@@ -11,7 +11,7 @@ function createToken(user){
   const payload = {
     sub: id,// revisar crear ids aleaterios
     iat: moment().unix(),
-    exp: moment().add(14, 'days').unix(),
+    exp: moment().add(1, 'year').unix(),
   }
   // Con moment add indicamos en que tiempo la fecha va caducar lo habitual son 14 days
   return jwt.encode(payload, config.SECRET_TOKEN);
