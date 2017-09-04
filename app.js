@@ -22,7 +22,7 @@ app.use(function(req, res, next) {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // Para poder enviar fetch of type post usamos express-formidable
-app.use(formidable());
+// app.use(formidable());
 
 app.engine('.hbs', hbs({
   defaultLayout: 'default',
