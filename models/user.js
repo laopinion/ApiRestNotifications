@@ -32,12 +32,12 @@ UserSchema.pre('save', function(next) {
 });
 
 // Compara claves
-UserSchema.methods.comparePassword = function(candidatePassword, cb) {
-  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-      if (err) return cb(err);
-      cb(null, isMatch);
-  });
-};
+// UserSchema.methods.comparePassword = function(candidatePassword, cb) {
+//   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+//       if (err) return cb(err);
+//       cb(null, isMatch);
+//   });
+// };
 
 // UserSchema.methods.gravatar = function(){
 //   if(!this.email) return 'https://gravatar.com/avatar/?s=200&d=retro'
