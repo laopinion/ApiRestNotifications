@@ -42,7 +42,7 @@ app.get('/login', (req, res) => {
 });
 
 app.get('/create-user', (req, res) => {
-  res.render('singup');
+  res.render('signup');
 });
 
 module.exports = app;
