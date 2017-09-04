@@ -1,0 +1,35 @@
+<form id="createUser" method="post">
+  <input type="email" name="email" placeholder="Tu Email">
+  <br><br>
+  <input type="text" name="displayName" placeholder="Tu Email">
+  <br><br>
+  <input type="password" name="password" placeholder="Tu Contraseña">
+  <br><br>
+  <input type="submit" value="Login">
+</form>
+
+<script>
+  const createUser = document.querySelector('#createUser');
+
+  createUser.addEventListener('submit', event => {
+    event.preventDefault();
+
+    const formData = new FormData(createUser);
+    console.log('Esta es la data -> '+ formData);
+    
+    fetch('/api/signup', {
+      method: 'POST',
+      body: formData      
+    })
+    .then(function(res){
+      return res.json();
+    })
+    .then(data => {
+      // Guardamos el token en localStorage
+      console.log(`Creando user -> ${data}`)
+    })
+    .catch(err => {
+      console.log(`Algo salio mal -> ${err}`);
+    })
+  });
+</script>

@@ -41,4 +41,8 @@ app.get('/login', (req, res) => {
   res.render('login');
 });
 
+app.get('/create-user', (req, res) => {
+  res.render('singup');
+});
+
 module.exports = app;
