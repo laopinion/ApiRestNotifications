@@ -10,7 +10,7 @@ const api = require('./routers');
 const app = express();
 
 // Esto se agrego por un mensaje de advertencia 
-require('events').EventEmitter.defaultMaxListeners = Infinity;
+// require('events').EventEmitter.defaultMaxListeners = Infinity;
 
 // Documentación https://enable-cors.org/server_expressjs.html
 app.use(function(req, res, next) {

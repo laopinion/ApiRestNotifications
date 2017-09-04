@@ -23,14 +23,14 @@ function signUp(req, res){
 // Inicio de sesión de un user
 function signIn(req, res){
   // el req.fields es gracias a express-formidable para poder enviar los fetch type post
-  // console.log('Esto es el body ', req.fields )
+  console.log('Esto es el body con fields ', req.fields )
   /* 
     Nota llega un json normal porque lo estoy mandando de otra pagina porque con el express-formidable no funciono,
     si funciona dentro de la misma ruta.
   */
-  console.log('Esto es el body ', req.body)
+  // console.log('Esto es el body ', req.body)
 
-  User.findOne({ email: req.body.email }, (err, user) => {
+  User.findOne({ email: req.fields.email }, (err, user) => {
     if(err) return res.status(500).send({ message: err });
 
     if (!user) return res.status(404).send({ message: 'No existe el usuario' });
@@ -41,7 +41,7 @@ function signIn(req, res){
     // console.log('Clave hast user', req.fields.password);
 
     // Primero la clave que esta enviando el request y la clave que esta en la database;
-    bcrypt.compare(req.body.password, user.password, function(err, isMatch) {
+    bcrypt.compare(req.fields.password, user.password, function(err, isMatch) {
       if(err) return res.status(404).send({ message: 'Authentication failed. Wrong password.' });
       
       if(isMatch){
