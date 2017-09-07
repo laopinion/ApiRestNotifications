@@ -4,12 +4,17 @@ const admin = require("firebase-admin");
 
 // Documentación -> https://firebase.google.com/docs/cloud-messaging/admin/manage-topic-subscriptions
 const serviceAccount = require('../serviceAccountKey.json');
+// const serviceAccount = require('../serviceAccountKeyProd.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: 'https://notificacionesop.firebaseio.com'
 });
 
+/* 
+  Datababaseurl prodcution
+  databaseURL: "https://notificacionesop-a233e.firebaseio.com"
+ */
 function createToken(req, res){
   // console.log('Create token post ', req.params.token);
   const currentToken = req.params.token;
