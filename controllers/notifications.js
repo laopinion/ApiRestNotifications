@@ -8,10 +8,13 @@ const serviceAccount = require('../serviceAccountKeyProd.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://notificacionesop.firebaseio.com'
+  databaseURL: 'https://notificacionesop-a233e.firebaseio.com'
 });
 
-/* 
+/*
+  // dev:  
+  databaseURL: 'https://notificacionesop.firebaseio.com'
+
   Datababaseurl prodcution
   databaseURL: "https://notificacionesop-a233e.firebaseio.com"
  */
