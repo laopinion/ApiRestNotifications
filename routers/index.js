@@ -19,7 +19,7 @@ api.get('/createToken/:token', notifiCtrl.createToken);
 api.post('/sendMessanging', auth, notifiCtrl.sendMessanging);
 
 // Registro de un user 
-// api.post('/signup', userCtrl.signUp);
+api.post('/signup', userCtrl.signUp);
 
 // Iniciar seseion
 api.post('/signin', userCtrl.signIn);
