@@ -29,7 +29,7 @@ function signIn(req, res){
     Nota llega un json normal porque lo estoy mandando de otra pagina porque con el express-formidable no funciono,
     si funciona dentro de la misma ruta.
   */
-  console.log('Esto es el body ', req.body)
+  // console.log('Esto es el body ', req.body)
 
   User.findOne({ email: req.body.email }, (err, user) => {
     if(err) return res.status(500).send({ message: err });
